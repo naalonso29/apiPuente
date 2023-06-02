@@ -10,13 +10,13 @@ app.set('port', puerto)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.listen(app.get("port"), () => console.log("Servidor Corriendo"));
+app.listen(app.get("port"), () => console.log("Servidor Corriendo", puerto));
 
-app.get('/', (req, res) => { 
-
+app.get('/', (req, res) => {
+    
     const options = {
         method: 'GET', 
-        url: req.query.urlCompleta
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token
     };
 
     axios.request(options).then(function (response) {
@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
 
     const options = {
         method: 'POST',
-        url: req.query.urlCompleta,
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token,
         data: req.body
     };
 
@@ -47,7 +47,7 @@ app.put('/', (req, res) => {
     
     const options = {
         method: 'PUT',
-        url: req.query.urlCompleta,
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token,
         data: req.body
     };
 
@@ -63,7 +63,7 @@ app.delete('/', (req, res) => {
     
     const options = {
         method: 'DELETE',
-        url: req.query.urlCompleta,
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token,
         data: req.body
     };
 
