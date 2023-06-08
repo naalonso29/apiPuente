@@ -27,6 +27,36 @@ app.get('/', (req, res) => {
 
 });
 
+app.get('/ventasDesde', (req, res) => {
+    
+    const options = {
+        method: 'GET', 
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&fecha_desde=" + req.query.fecha_desde
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
+app.get('/masIdPublicacion', (req, res) => {
+    
+    const options = {
+        method: 'GET', 
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idPublicacion=" + req.query.idPublicacion
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
 app.post('/', (req, res) => { 
 
     const options = {
