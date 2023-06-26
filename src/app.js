@@ -12,51 +12,6 @@ app.use(bodyParser.json());
 
 app.listen(app.get("port"), () => console.log("Servidor Corriendo", puerto));
 
-app.get('/', (req, res) => {
-    
-    const options = {
-        method: 'GET', 
-        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token
-    };
-
-    axios.request(options).then(function (response) {
-        res.send(response.data);
-    }).catch(function (error) {
-        res.send(error);
-    });
-
-});
-
-app.get('/ventasDesde', (req, res) => {
-    
-    const options = {
-        method: 'GET', 
-        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&fecha_desde=" + req.query.fecha_desde
-    };
-
-    axios.request(options).then(function (response) {
-        res.send(response.data);
-    }).catch(function (error) {
-        res.send(error);
-    });
-
-});
-
-app.get('/masIdPublicacion', (req, res) => {
-    
-    const options = {
-        method: 'GET', 
-        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idPublicacion=" + req.query.idPublicacion
-    };
-
-    axios.request(options).then(function (response) {
-        res.send(response.data);
-    }).catch(function (error) {
-        res.send(error);
-    });
-
-});
-
 app.post('/', (req, res) => { 
 
     const options = {
@@ -105,11 +60,11 @@ app.put('/', (req, res) => {
 
 });
 
-app.delete('/', (req, res) => { 
+app.delete('/borrarImagen', (req, res) => { 
     
     const options = {
         method: 'DELETE',
-        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token,
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idProducto=" + req.query.idProducto + "&idImagen=" + req.query.idImagen,
         data: req.body
     };
 
