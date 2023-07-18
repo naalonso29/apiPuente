@@ -28,11 +28,43 @@ app.post('/', (req, res) => {
 
 });
 
+app.post('/crearVariante', (req, res) => { 
+
+    const options = {
+        method: 'POST',
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idProducto=" + req.query.idProducto,
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
 app.put('/editarProducto', (req, res) => { 
     
     const options = {
         method: 'PUT',
         url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idProducto=" + req.query.idProducto,
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
+app.put('/editarVariante', (req, res) => { 
+    
+    const options = {
+        method: 'PUT',
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idProducto=" + req.query.idProducto + "&idVariante=" + req.query.idVariante,
         data: req.body
     };
 
