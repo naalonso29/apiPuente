@@ -139,3 +139,19 @@ app.delete('/borrarImagen', (req, res) => {
     });
 
 });
+
+app.delete('/borrarCategoria', (req, res) => { 
+    
+    const options = {
+        method: 'DELETE',
+        url: req.query.urlCompleta + "?" + "userId=" + req.query.userId + "&token=" + req.query.token + "&idCategoria=" + req.query.idCategoria,
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
