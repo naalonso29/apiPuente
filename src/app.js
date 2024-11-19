@@ -155,3 +155,78 @@ app.delete('/borrarCategoria', (req, res) => {
     });
 
 });
+
+/**************************************************************************************************************************************************************/
+/**************************************************************************************************************************************************************/
+/********************************************************    METODOS PARA LA WEB DE ANSAR    ******************************************************************/
+/**************************************************************************************************************************************************************/
+/**************************************************************************************************************************************************************/
+
+
+app.get('/puenteWebAnsar', (req, res) => { 
+
+    let tienda = req.query.tienda
+    let token = req.query.token
+
+    const options = {
+        method: 'GET',
+        url: req.query.urlCompleta,
+        headers: {
+            'Authorization': token
+        },
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
+
+app.post('/puenteWebAnsar', (req, res) => { 
+
+    let tienda = req.query.tienda
+    let token = req.query.token
+
+    const options = {
+        method: 'POST',
+        url: req.query.urlCompleta,
+        headers: {
+            'Authorization': token
+        },
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
+
+
+app.put('/puenteWebAnsar', (req, res) => { 
+
+    let tienda = req.query.tienda
+    let token = req.query.token
+
+    const options = {
+        method: 'PUT',
+        url: req.query.urlCompleta,
+        headers: {
+            'Authorization': token
+        },
+        data: req.body
+    };
+
+    axios.request(options).then(function (response) {
+        res.send(response.data);
+    }).catch(function (error) {
+        res.send(error);
+    });
+
+});
