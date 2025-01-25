@@ -7,8 +7,11 @@ const puerto = process.env.PORT || 3001;
 
 app.set('port', puerto)
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+
+/*app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());*/
 
 app.listen(app.get("port"), () => console.log("Servidor Corriendo", puerto));
 
